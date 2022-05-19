@@ -1,0 +1,226 @@
+basePath: /
+definitions:
+  api.DeleteGroupRequest:
+    properties:
+      group_name:
+        type: string
+    type: object
+  api.DeleteUserRequest:
+    properties:
+      username:
+        type: string
+    type: object
+  api.Group:
+    properties:
+      group_name:
+        type: string
+    type: object
+  api.UpdateGroupRequest:
+    properties:
+      group_name:
+        type: string
+      new_group_name:
+        type: string
+    type: object
+  api.UpdateUserRequest:
+    properties:
+      field:
+        type: string
+      username:
+        type: string
+      value:
+        type: string
+    type: object
+  api.User:
+    properties:
+      email:
+        type: string
+      group:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: api swagger documentation
+  title: api
+  version: "1.0"
+paths:
+  /add/group:
+    post:
+      consumes:
+      - application/json
+      description: create new group
+      parameters:
+      - description: group data
+        in: body
+        name: group
+        required: true
+        schema:
+          $ref: '#/definitions/api.Group'
+      responses:
+        "201":
+          description: ""
+        "400":
+          description: ""
+        "405":
+          description: ""
+        "409":
+          description: ""
+        "500":
+          description: ""
+      summary: Create new group
+  /add/user:
+    post:
+      consumes:
+      - application/json
+      description: create new user
+      parameters:
+      - description: user data
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.User'
+      responses:
+        "201":
+          description: ""
+        "400":
+          description: ""
+        "405":
+          description: ""
+        "409":
+          description: ""
+        "500":
+          description: ""
+      summary: Create new user
+  /delete/group:
+    delete:
+      consumes:
+      - application/json
+      description: delete group
+      parameters:
+      - description: delete group request
+        in: body
+        name: delete
+        required: true
+        schema:
+          $ref: '#/definitions/api.DeleteGroupRequest'
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+        "405":
+          description: ""
+        "500":
+          description: ""
+      summary: Delete Group
+  /delete/user:
+    delete:
+      consumes:
+      - application/json
+      description: delete user
+      parameters:
+      - description: delete user request
+        in: body
+        name: delete
+        required: true
+        schema:
+          $ref: '#/definitions/api.DeleteUserRequest'
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+        "405":
+          description: ""
+        "500":
+          description: ""
+      summary: Delete User
+  /list/groups:
+    get:
+      consumes:
+      - application/json
+      description: list groups
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.Group'
+            type: array
+        "405":
+          description: ""
+        "500":
+          description: ""
+      summary: List groups
+  /list/users:
+    get:
+      consumes:
+      - application/json
+      description: list users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.User'
+            type: array
+        "405":
+          description: ""
+        "500":
+          description: ""
+      summary: List users
+  /update/group:
+    patch:
+      consumes:
+      - application/json
+      description: update group
+      parameters:
+      - description: update group request
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/api.UpdateGroupRequest'
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+        "405":
+          description: ""
+        "500":
+          description: ""
+      summary: Update group
+  /update/user:
+    patch:
+      consumes:
+      - application/json
+      description: update user
+      parameters:
+      - description: update user request
+        in: body
+        name: update
+        required: true
+        schema:
+          $ref: '#/definitions/api.UpdateUserRequest'
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+        "405":
+          description: ""
+        "500":
+          description: ""
+      summary: Update user
+swagger: "2.0"
