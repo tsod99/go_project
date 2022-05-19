@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  api:
+    build: .
+    environment:
+      - PORT=8080
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PASSWORD=$db_password
+      - POSTGRES_DATABASE=postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "db"
+    networks: [custom_net]
+    restart:
+      on-failure
+  db:
+    image: postgres:13.1
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PASSWORD=$db_password
+      - POSTGRES_DATABASE=postgres
+    ports:
+      - "5432:5432"
+    networks: [custom_net]
+    volumes:
+      - postgresVolume:/var/lib/postgresql/data
+
+networks:
+  custom_net: {}
+
+volumes: 
+  postgresVolume: {}
+
